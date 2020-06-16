@@ -1,7 +1,32 @@
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
+import numpy as np
+import csv
 
-x = [5, 7, 8, 7, 2, 17, 2, 9, 4, 11, 12, 9, 6]
-y = [99, 86, 87, 88, 111, 86, 103, 87, 94, 78, 77, 85, 86]
+x=[]
+y=[]
+with open("../data/test.csv",'r') as csvfile:
+    plots = csv.reader(csvfile, delimiter=',')
+    for row in plots:
+        x.append(float(row[0]))
+        # print("x:", x)
+        y.append(float(row[1]))
+        # print("y:", y)
 
+x_rot = []
+y_rot = []
+with open("../data/rectangle_points10_retated.csv",'r') as csvfile:
+    plots = csv.reader(csvfile, delimiter=',')
+    for row in plots:
+        x_rot.append(float(row[0]))
+        # print("x:", x)
+        y_rot.append(float(row[1]))
+        # print("y:", y)
+#畫折線圖
 plt.scatter(x, y)
+plt.scatter(x_rot, y_rot)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.xlim(-5, 5)
+plt.ylim(-5, 5)
+# plt.legend()
 plt.show()
